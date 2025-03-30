@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://f83ndufs4ng4"]
+[gd_scene load_steps=7 format=3 uid="uid://f83ndufs4ng4"]
+
+[ext_resource type="PackedScene" uid="uid://cicsiwk0ffy8w" path="res://Player.tscn" id="1_glv2v"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rxg2q"]
 
@@ -29,6 +31,9 @@ shape = SubResource("WorldBoundaryShape3D_rxg2q")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("PlaneMesh_glv2v")
+
+[node name="Node3D" parent="StaticBody3D" instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158611, 1, -0.31523)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cm0pq")
