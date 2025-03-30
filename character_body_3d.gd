@@ -12,6 +12,7 @@ var t_bob = 0.0
 
 var gravity = 9.8
 
+@onready var körper = $MeshInstance3D
 @onready var kopf = $kopf
 @onready var camera = $kopf/Camera3D
 
@@ -20,11 +21,13 @@ func _ready():
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
+		körper.rotate_y(-event.relative.x * SENSITIVITY)
 		kopf.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 
+		
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -51,6 +54,7 @@ func _physics_process(delta: float) -> void:
 # HEAD bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
+
 
 
 	move_and_slide()
