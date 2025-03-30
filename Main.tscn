@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://f83ndufs4ng4"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rxg2q"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_glv2v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
+sky_top_color = Color(0.295796, 0.5843, 0.857056, 1)
+sky_horizon_color = Color(0.70152, 0.723573, 0.748779, 1)
+sky_curve = 0.0699773
+sky_cover_modulate = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0.144581, 0.158203, 0.158498, 1)
+ground_horizon_color = Color(0.695965, 0.70471, 0.718519, 1)
+
+[sub_resource type="Sky" id="Sky_r0du0"]
+sky_material = SubResource("ProceduralSkyMaterial_uu6xs")
+
+[sub_resource type="Environment" id="Environment_cm0pq"]
+background_mode = 2
+sky = SubResource("Sky_r0du0")
+
+[node name="World" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_rxg2q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_glv2v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cm0pq")
