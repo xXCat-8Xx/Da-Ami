@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://b7p8iwx6bxiy5"]
 
 [ext_resource type="Script" path="res://menü.gd" id="1_6n1hd"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://uyk77x82s8f7"]
+
+[ext_resource type="Script" uid="uid://dcsgftjuvtuei" path="res://menü.gd" id="1_6n1hd"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Shader" id="Shader_knxia"]
 code = "shader_type canvas_item;
