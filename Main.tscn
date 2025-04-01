@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://f83ndufs4ng4"]
+[gd_scene load_steps=9 format=3 uid="uid://f83ndufs4ng4"]
 
 [ext_resource type="PackedScene" uid="uid://cicsiwk0ffy8w" path="res://Player.tscn" id="1_glv2v"]
+[ext_resource type="ArrayMesh" uid="uid://nnjijketebpn" path="res://dach dach dach.obj" id="2_uu6xs"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rxg2q"]
 
@@ -21,6 +22,9 @@ sky_material = SubResource("ProceduralSkyMaterial_uu6xs")
 background_mode = 2
 sky = SubResource("Sky_r0du0")
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uu6xs"]
+margin = 0.0
+
 [node name="World" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -38,5 +42,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158611, 1, -0.31523)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cm0pq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20735, 4.01898, -1.67867)
+[node name="DachDachDach" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, 4, 0, -4, -1.74846e-07, 0, 0, -8.83652)
+mesh = ExtResource("2_uu6xs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DachDachDach"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DachDachDach/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.56363e-08, 0, 5.56363e-08, 1, -0.0715, -0.192719, -8.42395e-09)
+shape = SubResource("ConcavePolygonShape3D_uu6xs")
