@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7p8iwx6bxiy5"]
+
+[ext_resource type="Script" path="res://menü.gd" id="1_6n1hd"]
+
+[sub_resource type="Shader" id="Shader_knxia"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_igs7q"]
+shader = SubResource("Shader_knxia")
+
+[node name="Menü" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 477.0
+offset_bottom = 269.0
+script = ExtResource("1_6n1hd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_igs7q")
+layout_mode = 2
+offset_left = 161.0
+offset_top = 53.0
+offset_right = 305.0
+offset_bottom = 204.0
+color = Color(0.789308, 0.373588, 0.723854, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 72.0
+offset_right = 268.0
+offset_bottom = 173.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
