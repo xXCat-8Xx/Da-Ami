@@ -12,19 +12,39 @@ var t_bob = 0.0
 
 var gravity = 9.8
 
+@onready var körper = $MeshInstance3D
 @onready var kopf = $kopf
 @onready var camera = $kopf/Camera3D
+@onready var pause_menü = $"Node3D/Pause Menü"
+
+var pausiert = false
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		PauseMenü()
+
+func PauseMenü():
+	if pausiert:
+		pause_menü.hide()
+		Engine.time_scale = 1
+		
+	else:
+		pause_menü.show()
+		Engine.time_scale = 0
+	pausiert = !pausiert
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
+		körper.rotate_y(-event.relative.x * SENSITIVITY)
 		kopf.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 
+		
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -51,6 +71,7 @@ func _physics_process(delta: float) -> void:
 # HEAD bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
+
 
 
 	move_and_slide()
