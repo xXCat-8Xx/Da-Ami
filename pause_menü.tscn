@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyl5n5w0brlpb"]
+
+[ext_resource type="Script" uid="uid://dalki48ggvmha" path="res://pause_menü.gd" id="1_8xt2f"]
+
+[sub_resource type="Theme" id="Theme_8tvaj"]
+
+[sub_resource type="Theme" id="Theme_8xt2f"]
+
+[node name="Pause Menü" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8xt2f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_8tvaj")
+theme_override_constants/separation = 68
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8xt2f")
+theme_override_font_sizes/font_size = 141
+text = "Quit"
+
+[node name="resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 141
+text = "resume"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
