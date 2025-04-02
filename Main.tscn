@@ -39,7 +39,7 @@ mesh = SubResource("PlaneMesh_glv2v")
 environment = SubResource("Environment_cm0pq")
 
 [node name="Node3D" parent="." instance=ExtResource("1_glv2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158611, 1, -0.31523)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158611, 42.8564, 10.8908)
 
 [node name="Pause Menü" parent="Node3D" instance=ExtResource("3_cm0pq")]
 offset_left = 2.0
