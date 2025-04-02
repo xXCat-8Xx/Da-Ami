@@ -32,17 +32,17 @@ size_flags_stretch_ratio = 0.0
 theme = SubResource("Theme_8tvaj")
 theme_override_constants/separation = 68
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_8xt2f")
-theme_override_font_sizes/font_size = 141
-text = "Quit"
-
 [node name="resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 141
 text = "resume"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8xt2f")
+theme_override_font_sizes/font_size = 141
+text = "Quit"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
